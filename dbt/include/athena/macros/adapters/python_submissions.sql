@@ -84,7 +84,7 @@ def get_spark_df(identifier):
     So the override removes the catalog component and only
     provides the schema and identifer to spark.table()
     """
-    return spark.table(".".join(identifier.split(".")[1:]).replace('"', ''))
+    return spark.table(".".join([f'`{id}`' for id in identifier.split(".")[1:]]).replace('"', ''))
 
 class SparkdbtObj(dbtObj):
     def __init__(self):
