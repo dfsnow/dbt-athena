@@ -47,7 +47,7 @@ def materialize(spark_session, df, target_relation):
         writer = writer.sortBy({{ sorted_by }})
 
     writer.saveAsTable(
-        name="{{ target_relation.schema}}.{{ target_relation.identifier }}",
+        name="`{{ target_relation.schema}}`.`{{ target_relation.identifier }}`",
     )
 {% endif %}
 
