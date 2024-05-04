@@ -83,6 +83,9 @@ def get_spark_df(identifier):
 
     So the override removes the catalog component and only
     provides the schema and identifer to spark.table()
+
+    Also wraps the schema and identifier in backticks
+    in order to support dashes
     """
     return spark.table(".".join([f'`{id}`' for id in identifier.split(".")[1:]]).replace('"', ''))
 
